@@ -41,5 +41,3 @@ function game(){
 }
 
 game()
-
-//take a random result for computer, rock paper or scissors

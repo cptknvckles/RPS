@@ -29,15 +29,15 @@ function playRound(playerSelection, computerSelection){
 }
 
 
-function game(){
-    let round = 5
-    for(let i = 0; i < 5; i++){
-        let playerSelection = prompt('Pick Rock, Paper, or Scissors!')
-        const computerSelection = getComputerChoice()
-        playRound(playerSelection, computerSelection)
-        round--
-        console.log(`Rounds left ${round}`);
-    }
-}
+// function game(){
+//     let round = 5
+//     for(let i = 0; i < 5; i++){
+//         let playerSelection = prompt('Pick Rock, Paper, or Scissors!')
+//         const computerSelection = getComputerChoice()
+//         playRound(playerSelection, computerSelection)
+//         round--
+//         console.log(`Rounds left ${round}`);
+//     }
+// }
 
-game()
+// game()

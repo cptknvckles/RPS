@@ -13,14 +13,20 @@
 <body>
     <div class="game-card">
         <div class="computer">
-            <p>Computer picks: </p>
-            <div class="c-choice"> Paper</div>
+            <div id="c-choice"></div>
+            <div id="gameHUD"></div>
         </div>
         <div class="hand-container">
-            <button class="rock">🗿</button>
-            <button class="paper">📄</button>
-            <button class="scissors">✂️</button>
+            <button class="rock" id="rockButton">🗿</button>
+            <button class="paper" id="paperButton">📄</button>
+            <button class="scissors" id="scissorButton">✂️</button>
         </div>
+        <div class="gamestats">
+            <div id="roundCount"></div>
+            <div id="playerPoints"></div>
+            <div id="computerPoints"></div>
+        </div>
+        
     </div>
     
     <script src="index.js"></script>

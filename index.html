@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cherry+Bomb+One&display=swap');
+      </style>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,11 +11,18 @@
     <title>RockPaperScissors</title>
 </head>
 <body>
-    <div class="hand-container">
-        <button>Rock</button>
-        <button>Paper</button>
-        <button>Scissors</button>
+    <div class="game-card">
+        <div class="computer">
+            <p>Computer picks: </p>
+            <div class="c-choice"> Paper</div>
+        </div>
+        <div class="hand-container">
+            <button class="rock">🗿</button>
+            <button class="paper">📄</button>
+            <button class="scissors">✂️</button>
+        </div>
     </div>
+    
     <script src="index.js"></script>
 </body>
 </html>

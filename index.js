@@ -1,82 +1,102 @@
-const rockButton = document.getElementById('rockButton')
-const paperButton = document.getElementById('paperButton')
-const scissorButton = document.getElementById('scissorButton')
-const compChoice = document.getElementById('c-choice')
-const roundEl = document.getElementById('roundCount')
-const gameStat = document.getElementById('gameHUD')
-const playerShow = document.getElementById('playerPoints')
-const AIShow = document.getElementById('computerPoints')
-let playerScore = 0
-let computerScore = 0
+const rockButton = document.getElementById('rockButton');
+const paperButton = document.getElementById('paperButton');
+const scissorButton = document.getElementById('scissorButton');
+const compChoice = document.getElementById('c-choice');
+const roundEl = document.getElementById('roundCount');
+const gameStat = document.getElementById('gameHUD');
+const playerShow = document.getElementById('playerPoints');
+const AIShow = document.getElementById('computerPoints');
+const resetButton = document.getElementById('resetButton');
+let playerScore = 0;
+let computerScore = 0;
 
 const gameConditions = {
-    rock: { scissors: 'win', paper: 'lose' },
-    paper: { rock: 'win', scissors: 'lose' },
-    scissors: { paper: 'win', rock: 'lose' }
-}
+  rock: { scissors: 'win', paper: 'lose' },
+  paper: { rock: 'win', scissors: 'lose' },
+  scissors: { paper: 'win', rock: 'lose' }
+};
 
 function playRound(playerSelection, computerSelection) {
-    const result = gameConditions[playerSelection][computerSelection]
-    switch (result) {
-        case 'win':
-            gameStat.innerHTML = `You Won! ${playerSelection} beats ${computerSelection}`
-            playerScore++
-            break
+  const result = gameConditions[playerSelection][computerSelection];
+  switch (result) {
+    case 'win':
+      gameStat.innerHTML = `You Won! ${playerSelection} beats ${computerSelection}`;
+      playerScore++;
+      break;
 
-        case 'lose':
-            gameStat.innerHTML = `You Lose! ${computerSelection} beats ${playerSelection}`
-            computerScore++
-            break
+    case 'lose':
+      gameStat.innerHTML = `You Lose! ${computerSelection} beats ${playerSelection}`;
+      computerScore++;
+      break;
 
-        default:
-            gameStat.innerHTML = 'Tie!'
-    }
+    default:
+      gameStat.innerHTML = 'Tie!';
+  }
 }
 
 function getComputerChoice() {
-    let hand = ['rock', 'paper', 'scissors']
-    let randomHand = hand[Math.floor(Math.random() * hand.length)]
-    compChoice.innerHTML = `AI Chose ${randomHand}`;
-    return randomHand
+  let hand = ['rock', 'paper', 'scissors'];
+  let randomHand = hand[Math.floor(Math.random() * hand.length)];
+  compChoice.innerHTML = `AI Chose ${randomHand}`;
+  return randomHand;
 }
 
 function game() {
-    let round = 5
+  let round = 5;
 
-    function playGame(playerSelection) {
-                const computerSelection = getComputerChoice();
-                playRound(playerSelection, computerSelection);
-                round--
-                roundEl.innerHTML = `Rounds left: ${round}`;
-                if (round === 0) {
-                    playerShow.innerHTML = `You got ${playerScore} points`
-                    AIShow.innerHTML = `AI got ${computerScore} Points`
-                if (playerScore > computerScore) {
-                    gameStat.innerHTML = "Congratulations! You won!";
-                    gameStat.style.backgroundColor = 'red'
-                } else if (computerScore > playerScore) {
-                    gameStat.innerHTML = "Oops! You lost!";
-                    gameStat.style.backgroundColor = 'red'
-                } else {
-                    gameStat.innerHTML = "It's a tie!";
-                }
-            }
+  function playGame(playerSelection) {
+    const computerSelection = getComputerChoice();
+    playRound(playerSelection, computerSelection);
+    round--;
+    roundEl.innerHTML = `Rounds left: ${round}`;
+
+    if (round === 0) {
+      playerShow.innerHTML = `You got ${playerScore} points`;
+      AIShow.innerHTML = `AI got ${computerScore} Points`;
+      if (playerScore > computerScore) {
+        gameStat.innerHTML = "Congratulations! You won!";
+        gameStat.style.backgroundColor = 'red';
+      } else if (computerScore > playerScore) {
+        gameStat.innerHTML = "Oops! You lost!";
+        gameStat.style.backgroundColor = 'red';
+      } else {
+        gameStat.innerHTML = "It's a tie!";
+      }
+      // Show the reset button
+      resetButton.style.display = 'block';
     }
+  }
 
-    rockButton.addEventListener('click', () => {
-        playGame('rock');
-    });
+  function resetGame() {
+    round = 5;
+    playerScore = 0;
+    computerScore = 0;
+    roundEl.innerHTML = `Rounds left: ${round}`;
+    playerShow.innerHTML = '';
+    AIShow.innerHTML = '';
+    gameStat.innerHTML = '';
+    gameStat.style.backgroundColor = '';
+    compChoice.innerHTML = '';
+    resetButton.style.display = 'none';
+  }
 
-    paperButton.addEventListener('click', () => {
-        playGame('paper');
-    });
+  rockButton.addEventListener('click', () => {
+    playGame('rock');
+  });
 
-    scissorButton.addEventListener('click', () => {
-        playGame('scissors');
-    });
+  paperButton.addEventListener('click', () => {
+    playGame('paper');
+  });
+
+  scissorButton.addEventListener('click', () => {
+    playGame('scissors');
+  });
+
+  resetButton.addEventListener('click', resetGame);
 }
 
 game();
+
 
 
 

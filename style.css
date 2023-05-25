@@ -4,8 +4,8 @@
 }
 :root{
     --main-card-color: #FDF8C9;
-    --default-color: #2D435F
-    --font: 'Cherry Bomb One', cursive;
+    --default-color: #2D435F;
+    --button-color: #311154;
 }
 body{
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -60,12 +60,31 @@ body{
 }
 
 .computer {
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
   }
-
+/* reset button */
+.resetbtn{
+  position: absolute;
+  top: 16%;
+  margin-bottom: 5px;
+  font-size: medium;
+  background-color: var(--button-color);
+  color: white;
+  cursor: pointer;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3); 
+}
+.gamestats{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  bottom: 5%;
+  
+}
   button {
     padding: 10px;
     border: none;
